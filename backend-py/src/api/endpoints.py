@@ -7,7 +7,7 @@ from fastapi import Request
 from fastapi.middleware.cors import CORSMiddleware
 from langchain.schema import HumanMessage
 from langchain_core.messages import AIMessage, SystemMessage
-from langchain_core.pydantic_v1 import BaseModel, Field
+from pydantic import BaseModel, Field
 from langserve import add_routes
 from rich import print as rprint
 from rich.console import Console
@@ -25,20 +25,24 @@ logging.basicConfig(
     level="INFO",
     format="%(message)s",
     datefmt="[%X]",
-    handlers=[RichHandler(rich_tracebacks=True)]
+    handlers=[RichHandler(rich_tracebacks=True)],
 )
 logger = logging.getLogger(__name__)
 
 
 class ChatInputType(BaseModel):
-    messages: List[Union[HumanMessage, AIMessage, SystemMessage]] = Field(
-        ...,
-        description="The messages to be sent to the chatbot.",
-    ),
-    temperature: float = Field(
-        default=0.3,
-        description="The temperature to use for the chatbot.",
-    ),
+    messages: List[Union[HumanMessage, AIMessage, SystemMessage]] = (
+        Field(
+            ...,
+            description="The messages to be sent to the chatbot.",
+        ),
+    )
+    temperature: float = (
+        Field(
+            default=0.3,
+            description="The temperature to use for the chatbot.",
+        ),
+    )
 
     class Config:
         arbitrary_types_allowed = True
@@ -84,11 +88,17 @@ def start() -> None:
                     console.print(f"[bold yellow]Stream chunk:[/bold yellow] {chunk}")
                     yield chunk
 
-            response = StreamingResponse(stream_collector(response.body_iterator), media_type=response.media_type)
+            response = StreamingResponse(
+                stream_collector(response.body_iterator), media_type=response.media_type
+            )
 
         # Response status
-        console.print(f"[bold yellow]Response status:[/bold yellow] {response.status_code}")
-        console.print(f"[bold yellow]Response headers:[/bold yellow] {response.headers}")
+        console.print(
+            f"[bold yellow]Response status:[/bold yellow] {response.status_code}"
+        )
+        console.print(
+            f"[bold yellow]Response headers:[/bold yellow] {response.headers}"
+        )
 
         console.rule("[bold blue]End of Request")
         console.print()  # Add an empty line for separation

@@ -13,7 +13,6 @@ vlite
 langchain-qdrant
 tavily-python
 tiktoken
-IPython
 python-dotenv
 aiohttp
 rich

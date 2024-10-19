@@ -3,7 +3,7 @@ import { ref } from "vue";
 import { useMessageStore } from "../stores/messageStore";
 
 const apiResponse = ref("");
-const url = "http://localhost:8080/chat/stream";
+const url = "http://localhost:8000/chat/stream";
 
 export async function useSSEapi(userInput) {
   const messageStore = useMessageStore();
