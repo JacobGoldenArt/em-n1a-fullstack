@@ -15,7 +15,7 @@ const pinia = createPinia();
         <CurrentUserMessage />
       </div>
       <div class="assistant-panel prose">
-        <ThreadAlt />
+        <MessagesThread />
       </div>
     </div>
     <div class="assistant-settings-panel">

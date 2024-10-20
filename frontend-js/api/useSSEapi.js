@@ -5,7 +5,7 @@ import { useMessageStore } from "../stores/messageStore";
 const apiResponse = ref("");
 const url = "http://localhost:8000/chat/stream";
 
-export async function useSSEapi(userInput) {
+export async function useSSEapi() {
   const messageStore = useMessageStore();
   await fetchEventData(url, {
     method: "POST",
@@ -27,7 +27,7 @@ export async function useSSEapi(userInput) {
     onMessage: (e) => {
       console.log("response from sse", e);
       const { main_agent, run_id } = JSON.parse(e.data);
-      messageStore.appendToLastMessage(main_agent?.messages?.content || "");
+      messageStore.appendToLastMessage(main_agent?.messages.content || "");
       messageStore.setModelName(
         main_agent?.messages?.response_metadata?.model_name || ""
       );

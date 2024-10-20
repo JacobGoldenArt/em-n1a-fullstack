@@ -29,10 +29,8 @@ const exampleQuestions = [
 ];
 
 const sendMessage = async () => {
-  if (userInput.value?.trim()) {
-    messageStore.sendUserMessage(userInput);
-    userInput.value = ""; // Clear the input after sending
-  }
+  messageStore.sendUserMessage(userInput.value);
+  userInput.value = ""; // Clear the input after sending
 };
 
 const populateRandomQuestion = () => {

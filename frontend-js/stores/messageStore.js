@@ -15,7 +15,11 @@ export const useMessageStore = defineStore("messages", {
     },
     appendToLastMessage(content) {
       if (this.messages.length > 0) {
-        this.messages[this.messages.length - 1].content += content;
+        const ai_response = {
+          role: "assistant",
+          content: content,
+        };
+        this.messages.push(ai_response);
         console.log("Message store appendToLastMessage: ", this.messages);
       }
     },
@@ -35,13 +39,8 @@ export const useMessageStore = defineStore("messages", {
           content: userInput,
         };
         this.addMessage(userMessage);
-
-        this.addMessage({
-          role: "assistant",
-          content: "",
-        });
         this.setIsStreaming(true);
-        await useSSEapi(userInput);
+        await useSSEapi();
         this.setIsStreaming(false);
       }
     },

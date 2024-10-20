@@ -1,12 +1,10 @@
 <script setup>
 import DOMPurify from "dompurify";
 import { marked } from "marked";
-import { ref } from "vue";
 import { useMessageStore } from "../stores/messageStore";
 
 const messageStore = useMessageStore();
-const threadContainer = ref(null);
-console.log(messageStore.messages);
+console.log("messageStore.messages in ThreadAlt.vue: s", messageStore.messages);
 
 // Function to safely parse markdown
 const parseMarkdown = (content) => {
@@ -17,7 +15,10 @@ const parseMarkdown = (content) => {
 
 <template v-if="messageStore.messages.length > 0">
   <div v-for="(message, index) in messageStore.messages" :key="index">
-    <div :class="['message-block', `${message.role}`]">
+    <div
+      v-if="message.content !== ''"
+      :class="['message-block', `${message.role}`]"
+    >
       <div
         class="message-content"
         v-html="parseMarkdown(message.content)"
