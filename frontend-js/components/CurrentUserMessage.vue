@@ -1,9 +1,12 @@
 <script setup>
-import { ref } from "vue";
+import { ref, useTemplateRef } from "vue";
 import { useMessageStore } from "../stores/messageStore";
 
 const userInput = ref("");
+const textareaRef = useTemplateRef("textareaRef");
+const isFocused = ref(false);
 const messageStore = useMessageStore();
+const userInputContainerRef = useTemplateRef("userInputContainerRef");
 
 const exampleQuestions = [
   "What are some practical tips for improving productivity when working remotely?",
@@ -29,8 +32,11 @@ const exampleQuestions = [
 ];
 
 const sendMessage = async () => {
-  messageStore.sendUserMessage(userInput.value);
-  userInput.value = ""; // Clear the input after sending
+  if (userInput.value.trim() !== "") {
+    messageStore.sendUserMessage(userInput.value);
+    messageStore.newUserMessage = true;
+    messageStore.isFocused = false;
+  }
 };
 
 const populateRandomQuestion = () => {
@@ -41,12 +47,18 @@ const populateRandomQuestion = () => {
 </script>
 
 <template>
-  <div class="message-input-container">
+  <div
+    ref="userInputContainerRef"
+    :class="['message-input-container', isFocused ? '' : 'is-blurred']"
+  >
     <textarea
       v-model="userInput"
+      ref="textareaRef"
       class="current-user-message"
       @keyup.enter="sendMessage"
-      placeholder="Type your message here..."
+      @focus="(isFocused = true), (userInput = '')"
+      @blur="isFocused = false"
+      :placeholder="!isFocused ? 'Type your message here...' : ''"
     ></textarea>
     <button @click="populateRandomQuestion" class="random-question-btn">
       Random Question
@@ -65,9 +77,15 @@ textarea {
   padding: 10px;
   min-height: 8em;
   border-radius: 10px;
-  border: 4px solid #fbf0fb;
+  border: 4px solid #f4d0f4;
   background: #fbf0fb;
   box-shadow: 1px 1px 4px 0px color(display-p3 0.13 0.13 0.13 / 0.25);
+}
+
+.is-blurred textarea,
+.is-blurred button {
+  transition: opacity 0.5s ease;
+  opacity: 0.5;
 }
 
 .random-question-btn {
@@ -82,5 +100,15 @@ textarea {
 
 .random-question-btn:hover {
   background-color: #0056b3;
+}
+
+/* Dark mode styles */
+
+.dark-mode textarea {
+  background: #202127;
+}
+
+.dark-mode .random-question-btn {
+  background-color: #ffc0f5;
 }
 </style>

@@ -1,12 +1,19 @@
 <script setup>
 import { createPinia } from "pinia";
 import "./assets/reset.css";
+import { useAppSettingsStore } from "./stores/appSettingsStore";
+import { useMessageStore } from "./stores/messageStore";
+import { presetMini } from "unocss";
 
 const pinia = createPinia();
+const appSettings = useAppSettingsStore();
 </script>
 
 <template>
-  <main id="app">
+  <main
+    id="app"
+    :class="(appSettings.theme, appSettings.darkMode ? 'dark-mode' : '')"
+  >
     <div class="app-settings-panel">
       <AppSettings />
     </div>
@@ -14,7 +21,7 @@ const pinia = createPinia();
       <div class="user-panel">
         <CurrentUserMessage />
       </div>
-      <div class="assistant-panel prose">
+      <div class="assistant-panel" ref="assistantPanel">
         <MessagesThread />
       </div>
     </div>
@@ -26,24 +33,21 @@ const pinia = createPinia();
 
 <style scoped>
 #app {
-  width: 100vw;
   height: 100vh;
   background: color(display-p3 1 1 1);
   display: flex;
   flex-direction: row;
   font-family: "Inter", sans-serif;
-  flex-wrap: nowrap;
   justify-content: flex-start;
-  overflow: hidden; /* Add this to prevent scrolling on the main container */
 }
 
 .app-settings-panel {
   display: flex;
-  flex: none;
-  width: 50px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 50px;
   flex-direction: column;
   align-items: center;
-  flex-shrink: 0;
   background: color(display-p3 0.1922 0.1804 0.1647);
 }
 
@@ -51,41 +55,55 @@ const pinia = createPinia();
   display: flex;
   flex: auto;
   flex-direction: row;
-  overflow: hidden; /* Add this to prevent scrolling on the content container */
   background-color: #f0f0f0;
 }
 
 .user-panel {
   display: flex;
-  flex: 1;
+  flex-shrink: 0;
+  flex-grow: 2;
+  flex-basis: 30%;
   padding: 0px 20px;
   flex-direction: column;
   justify-content: center;
-  flex-shrink: 0;
 }
 
 .assistant-panel {
-  display: flex;
-  flex: 2;
-  flex-direction: column;
-  align-items: flex-start;
   flex-shrink: 0;
-  border-left: 5px solid color(display-p3 0.8875 0.8875 0.8875);
-  overflow-y: auto;
-  max-height: 100vh; /* Add this to ensure the panel takes full height */
-  padding: 0 20px 20px 20px;
+  flex-grow: 2;
+  flex-basis: 67%;
+  border-left: 1px solid color(display-p3 0.79 0.79 0.79);
+  height: 100vh;
 }
 
 .assistant-settings-panel {
   display: flex;
-  flex: none;
-  width: 50px;
+  flex-shrink: 0;
+  flex-basis: 50px;
+  flex-grow: 0;
   flex-direction: column;
   align-items: center;
-  flex-shrink: 0;
   background: color(display-p3 1 1 1);
-  position: sticky;
-  right: 0;
-  top: 0;
+}
+
+/* Dark mode styles */
+
+.dark-mode * {
+  background: #1b1b1f;
+  color: color(display-p3 0.95 0.94 0.94);
+  border-color: #ffc0f5;
+}
+
+.dark-mode .prose :where(p, h1, h2, h3, h4, h5, h6, ul, ol, pre) {
+  background: none !important;
+}
+
+.dark-mode .app-settings-panel {
+  background: #1b1b1f;
+  border-right: 1px solid #2e2e32;
+}
+
+.dark-mode .assistant-panel {
+  border-left: 1px solid #2e2e32;
 }
 </style>

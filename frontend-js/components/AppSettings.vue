@@ -2,6 +2,7 @@
 import { useAppSettingsStore } from "../stores/appSettingsStore";
 
 const size = "20px";
+const appSettings = useAppSettingsStore();
 
 // Define the type for AppSettings
 type AppSettings = {
@@ -58,9 +59,9 @@ const topNavLinks: AppSettings[] = [
 const bottomNavLinks: AppSettings[] = [
   {
     action: () => {
-      useAppSettingsStore().toggleTheme();
+      appSettings.toggleDarkMode();
     },
-    title: "theme-switch",
+    title: "dark mode",
     name: "i-fluent-dark-theme-24-regular",
     size: size,
   },
@@ -72,26 +73,14 @@ const bottomNavLinks: AppSettings[] = [
     <menu>
       <nav class="app-settings-top">
         <template v-for="link in topNavLinks">
-          <a
-            @click="
-              {
-                link.action;
-              }
-            "
-          >
+          <a @click="link.action">
             <icon :name="link.name" :size="link.size" />
           </a>
         </template>
       </nav>
       <nav class="app-settings-bottom">
         <template v-for="link in bottomNavLinks">
-          <a
-            @click="
-              {
-                link.action;
-              }
-            "
-          >
+          <a @click="link.action">
             <icon :name="link.name" :size="link.size" />
           </a>
         </template>

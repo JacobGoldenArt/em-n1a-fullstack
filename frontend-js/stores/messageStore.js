@@ -6,11 +6,13 @@ export const useMessageStore = defineStore("messages", {
     messages: [],
     modelName: "",
     runId: "",
-    isStreaming: false,
+    isLoading: false,
+    newAssistantMessage: false,
   }),
   actions: {
     addMessage(message) {
       this.messages.push(message);
+      this.newAssistantMessage = false;
       console.log("Message store addMessage: ", this.messages);
     },
     appendToLastMessage(content) {
@@ -19,8 +21,11 @@ export const useMessageStore = defineStore("messages", {
           role: "assistant",
           content: content,
         };
-        this.messages.push(ai_response);
-        console.log("Message store appendToLastMessage: ", this.messages);
+        if (ai_response.content !== "") {
+          this.messages.push(ai_response);
+          this.newAssistantMessage = true;
+          console.log("Message store appendToLastMessage: ", this.messages);
+        }
       }
     },
     setModelName(name) {
@@ -29,19 +34,22 @@ export const useMessageStore = defineStore("messages", {
     setRunId(id) {
       this.runId = id;
     },
-    setIsStreaming(status) {
-      this.isStreaming = status;
+    setIsLoading(status) {
+      this.isLoading = status;
     },
     async sendUserMessage(userInput) {
       if (userInput) {
-        const userMessage = {
-          role: "user",
-          content: userInput,
-        };
-        this.addMessage(userMessage);
-        this.setIsStreaming(true);
-        await useSSEapi();
-        this.setIsStreaming(false);
+        if (userInput !== "") {
+          const userMessage = {
+            role: "user",
+            content: userInput,
+          };
+
+          this.addMessage(userMessage);
+          this.setIsLoading(true);
+          await useSSEapi();
+          this.setIsLoading(false);
+        }
       }
     },
   },

@@ -163,6 +163,12 @@
 
 :where(textarea) {
   margin: 0;
+  resize: none;
+  outline: none;
+}
+
+:where(textarea:focus) {
+  outline: none;
 }
 
 /**

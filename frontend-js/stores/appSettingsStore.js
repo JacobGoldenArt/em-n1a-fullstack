@@ -8,6 +8,7 @@ export const useAppSettingsStore = defineStore("appSettings", {
     folderUpload: false,
     newSession: false,
     theme: "light",
+    darkMode: false,
   }),
   actions: {
     toggleSettingsPanel(status) {
@@ -25,8 +26,8 @@ export const useAppSettingsStore = defineStore("appSettings", {
     toggleNewSession(status) {
       this.newSession = status;
     },
-  },
-  toggleTheme(status) {
-    this.theme = status;
+    toggleDarkMode() {
+      this.darkMode = !this.darkMode;
+    },
   },
 });
