@@ -13,7 +13,6 @@ export const useMessageStore = defineStore("messages", {
     addMessage(message) {
       this.messages.push(message);
       this.newAssistantMessage = false;
-      console.log("Message store addMessage: ", this.messages);
     },
     appendToLastMessage(content) {
       if (this.messages.length > 0) {
@@ -24,7 +23,6 @@ export const useMessageStore = defineStore("messages", {
         if (ai_response.content !== "") {
           this.messages.push(ai_response);
           this.newAssistantMessage = true;
-          console.log("Message store appendToLastMessage: ", this.messages);
         }
       }
     },

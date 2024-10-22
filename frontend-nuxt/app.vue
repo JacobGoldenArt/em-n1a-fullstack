@@ -39,6 +39,7 @@ const appSettings = useAppSettingsStore();
   flex-direction: row;
   font-family: "Inter", sans-serif;
   justify-content: flex-start;
+  overflow: hidden;
 }
 
 .app-settings-panel {
@@ -71,7 +72,7 @@ const appSettings = useAppSettingsStore();
 .assistant-panel {
   flex-shrink: 0;
   flex-grow: 2;
-  flex-basis: 67%;
+  flex-basis: 65%;
   border-left: 1px solid color(display-p3 0.79 0.79 0.79);
   height: 100vh;
 }
