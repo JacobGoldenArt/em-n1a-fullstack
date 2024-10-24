@@ -57,7 +57,7 @@ def start() -> None:
 
     app.add_middleware(
         CORSMiddleware,
-        allow_origins=["http://localhost:3000"],
+        allow_origins=["*"],
         allow_methods=["*"],
         allow_headers=["Content-Type", "Accept"],
         allow_credentials=True,
