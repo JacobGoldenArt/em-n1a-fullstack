@@ -1,13 +1,11 @@
 import json
 from typing import Tuple
 
-import langsmith
 
 from src.dbs.pinecone_db import get_index, namespace
 from src.settings import constants
 
 
-@langsmith.traceable
 def fetch_core_memories(user_id: str) -> Tuple[str, list[str]]:
     """Fetch core memories for a specific user.
 

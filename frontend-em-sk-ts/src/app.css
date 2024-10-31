@@ -1,0 +1,250 @@
+@import './styles/pico-conditional-fusha.css';
+@import './styles/pico-base-vars.css';
+@import './styles/pico-color-vars.css';
+
+/* // Sans Body Fonts
+// Supports weights 100-900 */
+@import '@fontsource-variable/hanken-grotesk';
+@import '@fontsource-variable/overpass';
+@import '@fontsource-variable/dm-sans';
+@import '@fontsource-variable/inter';
+
+/* // Display Heading Fonts
+// Supports weights 300-700 */
+@import '@fontsource-variable/comfortaa';
+/* // Supports weights 200-800 */
+@import '@fontsource-variable/oxanium';
+/* // Supports weights 400-800 */
+@import '@fontsource-variable/baloo-bhaijaan-2';
+/* // Supports weights 400-800 */
+@import '@fontsource-variable/baloo-paaji-2';
+
+/* // Mono Fonts
+// Supports weights 400-700 */
+@import '@fontsource-variable/sometype-mono';
+/* // Supports weights 300-700 */
+@import '@fontsource-variable/fira-code';
+/* // Supports weights 100-700 */
+@import '@fontsource-variable/roboto-mono';
+
+:root {
+	--font-body: Arial;
+	--heading-1: 'Comfortaa Variable', system-ui;
+	--heading-2: 'Oxanium Variable', system-ui;
+	--heading-3: 'Baloo Bhaijaan 2 Variable', system-ui;
+	--heading-4: 'Baloo Paaji 2 Variable', system-ui;
+
+	--body-1: 'Hanken Grotesk Variable', sans-serif;
+	--body-2: 'Inter Variable', sans-serif;
+	--body-3: 'Overpass Variable', sans-serif;
+	--body-4: 'DM Sans Variable', sans-serif;
+
+	--mono-1: 'Sometype Mono Variable', monospace;
+	--mono-2: 'Fira Code Variable', monospace;
+	--mono-3: 'Roboto Mono Variable', monospace;
+
+	font-family: var(--font-body);
+
+	--pure-white: hsl(0 0% 100%);
+	--grey-ghost: hsl(0 0% 94%);
+	--pink-tee: hsl(300 57.89% 96.27%);
+	--pepto-pink: hsl(300 62.07% 88.63%);
+	--faded-black-tee: hsl(234 25% 23.53%);
+	--black-jeans: hsl(34 8% 18%);
+	--fade-to-black: hsl(240 4.17% 18.82%);
+	--subtle-grey-line: hsl(0 0.04% 79.01%);
+	--subtle-icons: hsl(248.31deg 6.63% 56.06%);
+	--input: var(--grey-ghost);
+	--input-foreground: var(--black-jeans);
+	--border: var(--subtle-grey-line);
+	--textarea: var(--pink-tee);
+	--textarea-foreground: var(--black-jeans);
+	--textarea-border: var(--pepto-pink);
+	--dm-pretty-much-white: hsl(358.84 11.55% 94.6%);
+	--pretty-much-black: hsl(0 0% 16%);
+
+	--dm-cinema-black: hsl(230 9% 14%);
+	--dm-black: hsl(240 7% 11%);
+	--dm-pretty-much-white: hsl(358.84 11.55% 94.6%);
+	--dm-pink-panther: hsl(309.52 100% 87.65%);
+}
+
+body {
+	min-height: 100vh;
+	margin: 0;
+	background-attachment: fixed;
+	background-size: 100vw 100vh;
+	border: none;
+}
+
+div {
+	border: none;
+}
+
+h1,
+h2,
+p {
+	font-weight: 400;
+}
+
+p {
+	line-height: 1.5;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+h1 {
+	font-size: 2rem;
+	text-align: center;
+}
+
+h2 {
+	font-size: 1rem;
+}
+
+pre {
+	font-size: 16px;
+	font-family: var(--font-mono);
+	background-color: rgba(255, 255, 255, 0.45);
+	border-radius: 3px;
+	box-shadow: 2px 2px 6px rgb(255 255 255 / 25%);
+	padding: 0.5em;
+	overflow-x: auto;
+	color: var(--color-text);
+}
+
+input,
+button {
+	font-size: inherit;
+	font-family: inherit;
+}
+
+button:focus:not(:focus-visible) {
+	outline: none;
+}
+
+button.icon {
+	background: none;
+	border: none;
+	padding: 0;
+	margin: 0;
+}
+
+@media (min-width: 720px) {
+	h1 {
+		font-size: 2.4rem;
+	}
+}
+
+.visually-hidden {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: auto;
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+	white-space: nowrap;
+}
+
+[data-theme='light'],
+:root:not([data-theme='dark']) {
+	color-scheme: light;
+	background-color: var(--pure-white);
+	color: var(--black-jeans);
+}
+[data-theme='light']
+	input:is(
+		[type='submit'],
+		[type='button'],
+		[type='reset'],
+		[type='checkbox'],
+		[type='radio'],
+		[type='file']
+	),
+:root:not([data-theme='dark'])
+	input:is(
+		[type='submit'],
+		[type='button'],
+		[type='reset'],
+		[type='checkbox'],
+		[type='radio'],
+		[type='file']
+	) {
+	--pico-form-element-focus-color: var(--pico-primary-focus);
+}
+
+@media only screen and (prefers-color-scheme: dark) {
+	:root:not([data-theme]) {
+		color-scheme: dark;
+		background-color: var(--dm-cinema-black);
+		color: var(--dm-pretty-much-white);
+	}
+	:root:not([data-theme])
+		input:is(
+			[type='submit'],
+			[type='button'],
+			[type='reset'],
+			[type='checkbox'],
+			[type='radio'],
+			[type='file']
+		) {
+		--pico-form-element-focus-color: var(--pico-primary-focus);
+	}
+	:root:not([data-theme]) details summary[role='button'].contrast:not(.outline)::after {
+		filter: brightness(0);
+	}
+	:root:not([data-theme])
+		[aria-busy='true']:not(input, select, textarea).contrast:is(
+			button,
+			[type='submit'],
+			[type='button'],
+			[type='reset'],
+			[role='button']
+		):not(.outline)::before {
+		filter: brightness(0);
+	}
+}
+[data-theme='dark'] {
+	color-scheme: dark;
+	background-color: var(--dm-cinema-black);
+	color: var(--dm-pretty-much-white);
+}
+[data-theme='dark']
+	input:is(
+		[type='submit'],
+		[type='button'],
+		[type='reset'],
+		[type='checkbox'],
+		[type='radio'],
+		[type='file']
+	) {
+	--pico-form-element-focus-color: var(--pico-primary-focus);
+}
+[data-theme='dark'] details summary[role='button'].contrast:not(.outline)::after {
+	filter: brightness(0);
+}
+[data-theme='dark']
+	[aria-busy='true']:not(input, select, textarea).contrast:is(
+		button,
+		[type='submit'],
+		[type='button'],
+		[type='reset'],
+		[role='button']
+	):not(.outline)::before {
+	filter: brightness(0);
+}
+
+progress,
+[type='checkbox'],
+[type='radio'],
+[type='range'] {
+	accent-color: var(--pico-primary);
+}

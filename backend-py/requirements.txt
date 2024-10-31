@@ -3,7 +3,6 @@ langgraph-sdk
 langchain-core
 langchain-community
 langchain-experimental
-langsmith
 langchain-openai
 langchain-anthropic
 langchain-fireworks

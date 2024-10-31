@@ -31,17 +31,13 @@ logger = logging.getLogger(__name__)
 
 
 class ChatInputType(BaseModel):
-    messages: List[Union[HumanMessage, AIMessage, SystemMessage]] = (
-        Field(
-            ...,
-            description="The messages to be sent to the chatbot.",
-        ),
+    messages: List[Union[HumanMessage, AIMessage, SystemMessage]] = Field(
+        ...,
+        description="The messages to be sent to the chatbot.",
     )
-    temperature: float = (
-        Field(
-            default=0.3,
-            description="The temperature to use for the chatbot.",
-        ),
+    temperature: float = Field(
+        default=0.3,
+        description="The temperature to use for the chatbot.",
     )
 
     class Config:
