@@ -1,0 +1,128 @@
+/* Dark Theme 1 */
+body.dark.darkTheme1 main {
+	font-family: var(--body-1);
+	background-color: var(--dark-default-bg);
+	color: var(--dark-default-text-color);
+
+	#settings-sidebar {
+		#app-settings-nav-panel {
+			background-color: var(--dark-nav-pane-bg);
+			border-right: 1px solid var(--blue-hint-purple);
+
+			.menu {
+				border-color: var(--dark-nav-rt-border);
+
+				button.icon {
+					color: var(--dark-nav-icon-color);
+
+					&:hover {
+						color: var(--dark-nav-icon-color-hover);
+					}
+
+					&.active {
+						color: var(--dark-nav-icon-color-active);
+					}
+				}
+			}
+		}
+
+		#app-settings-panel {
+			background-color: var(--nice-dark-bg);
+			color: var(--dark-settings-text-color);
+
+			label {
+				color: var(--settings-panel-form-element-text-color);
+			}
+
+			button {
+				background-color: var(--another-blue);
+				color: var(--dark-settings-ui-text-color);
+			}
+
+			input[type='range'],
+			input[type='text'],
+			textarea,
+			select,
+			input[type='checkbox'] {
+				background-color: var(--dark-settings-ui-bg);
+				color: var(--dark-settings-ui-text-color);
+				border-color: var(--ui-border-dark);
+			}
+
+			input:active,
+			input:focus,
+			textarea:active,
+			textarea:focus {
+				border-color: var(--boys-blue);
+			}
+		}
+	}
+
+	#content-container {
+		.pane-resizer-handle {
+			background: var(--dark-divider-color);
+		}
+
+		#user-content-pane {
+			background-color: var(--dark-user-pane-bg);
+
+			textarea {
+				background-color: var(--dark-user-textarea-bg);
+				color: var(--calm-white);
+				font-family: var(--mono-1);
+				border: var(--border-quiet);
+			}
+
+			button.user-submit {
+				background-color: var(--dark-user-submit-button-bg);
+				border: none;
+				color: var(--dark-user-submit-button-text-color);
+			}
+		}
+
+		#assistant-content-pane {
+			display: flex;
+			flex-direction: column;
+			background-color: var(--dark-assistant-pane-bg);
+			color: var(--dark-assistant-user-text-color);
+
+			.message-block {
+				display: flex;
+				flex-direction: column;
+				margin: 0 20px;
+			}
+
+			.message-block.user {
+				background-color: transparent;
+				color: var(--dark-assistant-user-text-color);
+				border-color: transparent;
+
+				.content {
+					background-color: transparent;
+					color: var(--dark-assistant-user-text-color);
+					font-family: var(--mono-1);
+					border-color: transparent;
+				}
+			}
+
+			.message-block.assistant {
+				background-color: var(--assistant-content-pane-bg-color);
+
+				.content {
+					background-color: var(--black-dog);
+					font-family: var(--body-1);
+					color: var(--dark-assistant-content-text-color);
+					border-color: var(--dark-assistant-content-text-color);
+					animation: border-color-morph 20s linear infinite;
+
+					pre {
+						background-color: var(--dark-user-textarea-bg);
+						border: 1px solid;
+						border-color: var(--longsleeve-black);
+						padding: 10px;
+					}
+				}
+			}
+		}
+	}
+}

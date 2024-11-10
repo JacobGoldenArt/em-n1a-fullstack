@@ -1,0 +1,88 @@
+:root {
+	/* Blacks */
+	--black-jacket: hsl(20 3% 19%);
+	--dark-water: hsl(0 0.6% 10.48%);
+	--black-coffee: hsl(0 0 8%);
+	--black-jeans: hsl(36 5% 18%);
+	--black-metal-black: hsl(300 2% 8%);
+	--black-out: hsl(20 4% 15%);
+	--blackened: hsl(0 0 15%);
+	--midnight: hsl(0 0 15%);
+	--cinema-blueish-black: hsl(228 7% 14%);
+	--dark-room: hsl(240 7% 11%);
+	--dark-tower: hsl(300 3% 13%);
+	--dark-tunnel: hsl(240 1% 15%);
+	--fade-to-black: hsl(240 4% 19%);
+	--grey-dark: hsl(300 1% 19%);
+	--just-about-black: hsl(300 2% 8%);
+	--longsleeve-black: hsl(0 0 22%);
+	--black-dog: hsl(0 0.91% 10%);
+	--nice-dark-bg: hsl(0 0 14%);
+	--nice-darker-bg: hsl(300 3% 8%);
+	--nice-fuzz-black: hsl(270 4% 11%);
+	--nice-fuzz-dark: hsl(315 5% 16%);
+	--ninja-black: hsl(13 13% 13%);
+	--sleep-mask-black: hsl(300 2% 8%);
+	--ui-border-dark: hsl(0 2% 21.72%);
+	/* Blues and Greens */
+	--another-blue: hsl(240deg 63.11% 52.61%);
+	--blue-hint-purple: hsl(243 34% 25%);
+	--boys-blue: hsl(232 76% 57%);
+	--calm-blue: hsl(214 34% 56%);
+	--fade-hoodie-blue: hsl(214 48% 65%);
+	--green-vibes: hsl(76 29% 52%);
+	--grey-blue: hsl(236 23% 23%);
+	--lagoon-green: hsl(176 35% 45%);
+	--long-dress-green: hsl(140 43% 61%);
+	--long-sleeve-blue: hsl(220 19% 31%);
+	--long-sleeve-blue-alt: hsl(219 19% 30%);
+	--muppet-blue-purple: hsl(243 34% 25%);
+	--retro-blue-green: hsl(183 19% 60%);
+	--t-shirt-fade-blueish: hsl(184 14% 52%);
+	--tropical-blue: hsl(203 62% 55%);
+	/* Pinks */
+	--baby-pink: hsl(293 57% 88%);
+	--calamine: hsl(293 56% 88%);
+	--pink-fuzz: hsl(283 96% 83% / 1.2);
+	--dirty-pink: hsl(292 25% 77%);
+	--fade-pink: hsl(263 79% 92%);
+	--grey-pink: hsl(294 26% 78%);
+	--pink-panther: hsl(302 69% 86%);
+	--touch-of-pink: hsl(295 52% 96%);
+	--warm-full-pink: hsl(333 35% 56%);
+	/* Whites and Tans */
+	--aged-paper: hsl(40 19% 91%);
+	--alu-min-ium: hsl(40 5% 88%);
+	--calm-white: hsl(285 100% 99%);
+	--creama: hsl(48 71% 99%);
+	--creamer-dreamer: hsl(30 17% 95%);
+	--dad-grey-beard: hsl(0 0 78%);
+	--dad-grey-light-shade: hsl(36 6% 85%);
+	--darker-steel: hsl(25 8% 60%);
+	--duvet-cloud: hsl(336 15% 94%);
+	--elephant: hsl(245 6% 56%);
+	--elephant-ghost: hsl(27 5% 88%);
+	--elephant-king: hsl(0 0 48%);
+	--fff-white: hsl(0 0 100%);
+	--greyer-parchment: hsl(80 4% 72%);
+	--lighter-paper-like: hsl(24 22% 95%);
+	--nice-fade-white: hsl(330 7% 89%);
+	--parchment: hsl(6 29% 93%);
+	--parchment-for-life: hsl(50 27% 96%);
+	--pinkish-creamer: hsl(0 29% 93%);
+	--stone-grey: hsl(24 6% 84%);
+	--sublte-grey: hsl(0 1% 79%);
+	--tanish: hsl(33 46% 88%);
+	--tin-man: hsl(0 0 88%);
+	--very-light-grey: hsl(0 0 94%);
+	--white-greyish: hsl(40 7% 84%);
+	/* Yellows and Reds */
+	--burnt-honey: hsl(31 39% 51%);
+	--burnt-orange: hsl(10 46% 51%);
+	--caramel: hsl(41 45% 51%);
+	--fade-orange: hsl(20 52% 44%);
+	--orangeish-brown: hsl(32 39% 52%);
+	--red-pop: hsl(9 68% 42%);
+	--rem-yellow: hsl(45 88% 61%);
+	--t-shirt-yellow: hsl(47 93% 63%);
+}

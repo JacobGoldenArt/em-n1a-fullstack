@@ -1,0 +1,39 @@
+/* // Sans Body Fonts
+// Supports weights 100-900 */
+@import '@fontsource-variable/hanken-grotesk';
+@import '@fontsource-variable/overpass';
+@import '@fontsource-variable/inter';
+
+/* // Display Heading Fonts
+// Supports weights 300-700 */
+@import '@fontsource-variable/comfortaa';
+/* // Supports weights 200-800 */
+@import '@fontsource-variable/oxanium';
+/* // Supports weights 400-800 */
+@import '@fontsource-variable/baloo-bhaijaan-2';
+/* // Supports weights 400-800 */
+@import '@fontsource-variable/baloo-paaji-2';
+
+/* // Mono Fonts
+// Supports weights 400-700 */
+@import '@fontsource-variable/sometype-mono';
+/* // Supports weights 300-700 */
+@import '@fontsource-variable/fira-code';
+/* // Supports weights 100-700 */
+@import '@fontsource-variable/roboto-mono';
+
+:root {
+	--heading-1: 'Comfortaa Variable', system-ui;
+	--heading-2: 'Oxanium Variable', system-ui;
+	--heading-3: 'Baloo Bhaijaan 2 Variable', system-ui;
+	--heading-4: 'Baloo Paaji 2 Variable', system-ui;
+
+	--body-1: 'Hanken Grotesk Variable', sans-serif;
+	--body-2: 'Inter Variable', sans-serif;
+	--body-3: 'Overpass Variable', sans-serif;
+	--body-4: 'DM Sans Variable', sans-serif;
+
+	--mono-1: 'Sometype Mono Variable', monospace;
+	--mono-2: 'Fira Code Variable', monospace;
+	--mono-3: 'Roboto Mono Variable', monospace;
+}

@@ -1,21 +1,20 @@
-<script>
-// @ts-nocheck
+<script lang="ts">
+
 
 	import { nanoid } from 'nanoid';
 	import { Pane, PaneGroup, PaneResizer } from 'paneforge';
+	import type { Message } from '../../../types/messageTypes';
+	import { appSettingsOpen } from '../app-settings/AppSettingsStore.js';
 	import AssistantContent from './AssistantContent.svelte';
 	import UserContent from './UserContent.svelte';
+	let messagesThreadArray: Message[] = $state([]);
+	let messageLoading: boolean = $state(false);
 
-
-	// user content states
-	let messageLoading = $state(false);
-	let messagesThreadArray = $state([]);
-
-	let sendUserMessage = async (userInput) => {
+	let sendUserMessage = async (userInput: string) => {
 		console.log(`Recived userInput: ${userInput}`);
 		if (userInput.trim() === "") return;
 		messageLoading = true;
-		const UserMessage = {
+		const UserMessage: Message = {
 			id: nanoid(),
 			role: "user",
 			content: userInput,
@@ -29,7 +28,7 @@
 		console.log(`Recived assistant Response Back in the client: ${response}`);
 		
 		const assitantResponse = await response.json();
-		const AssistantMessage = {
+		const AssistantMessage: Message = {
 			id: nanoid(),
 			role: "assistant",
 			content: assitantResponse.assistantMessage,
@@ -38,15 +37,15 @@
 		messageLoading = false;
 	};
 
-	let sendUserMessagefn = $state(sendUserMessage);
+	let sendUserMessagefn: (userInput: string) => Promise<void> = $state(sendUserMessage);
 
 </script>
 
-<div id="content-container">
+<div id="content-container" class:settings-open={$appSettingsOpen}>
 	<PaneGroup direction="horizontal" class="min-w-screen min-h-screen">
 		<!-- User Content -->
-		<Pane defaultSize={25} minSize={10} maxSize={40}>
-			<div id="user-content-container">
+		<Pane defaultSize={30} minSize={25} maxSize={40}>
+			<div id="user-content-pane">
 				<UserContent {sendUserMessagefn} />
 			</div>
 		</Pane>
@@ -56,7 +55,7 @@
 		</PaneResizer>
 		<!-- Assistant Content -->
 		<Pane defaultSize={75}>
-			<div id="assistant-content-container" class:loading={messageLoading}>
+			<div id="assistant-content-pane" class:loading={messageLoading}>
 				<AssistantContent {messagesThreadArray} {messageLoading} />
 			</div>
 		</Pane>
@@ -67,35 +66,38 @@
 #content-container {
     display: flex;
     flex-direction: row;
-    background: var(--grey-ghost);
-    margin: 0 60px;
-    border: 1px solid var(--subtle-grey-line);
-    border-top: none;
-    border-bottom: none;
-    background: var(--grey-ghost);
+    padding: 0;
+    transition: filter 0.3s ease;
 }
 
-#user-content-container {
-	display: flex;
-	flex-shrink: 0;
-	flex-grow: 2;
-	flex-basis: 30%;
-	padding: 0px 20px;
-	flex-direction: column;
-	justify-content: center;
+.settings-open {
+	filter: blur(3px);
+	opacity: 0.8;
 }
 
-#assistant-content-container {
+#user-content-pane {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    height: 100%;
+    margin-left: 60px;
+    padding: 0 30px;
+}
+
+
+
+#assistant-content-pane {
 	flex-shrink: 0;
 	flex-grow: 2;
 	flex-basis: 65%;
-	border-left: 1px solid var(--subtle-grey-line);
+	border-left-style: solid;
+	border-left-width: 1px;
 	height: 100vh;
 }
 
 .pane-resizer-handle {
 	cursor: col-resize;
-	background: var(--pepto-pink);
 	width: 2px;
 	height: 100%;
 }

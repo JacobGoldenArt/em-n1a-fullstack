@@ -1,0 +1,28 @@
+@property --hue {
+	syntax: '<number>';
+	initial-value: 0;
+	inherits: true;
+}
+
+@keyframes rainbow {
+	from {
+		--hue: 45;
+	}
+	to {
+		--hue: 360;
+	}
+}
+
+/* #user-content-pane button {
+	--hue: 0;
+	animation: rainbow 10s linear infinite;
+	animation-composition: add;
+	background-color: hsl(var(--hue) 88% 61%);
+} */
+
+/* article {
+	background: #fff;
+	border-radius: 16px;
+	max-width: 55ch;
+	padding: 1.5rem;
+} */

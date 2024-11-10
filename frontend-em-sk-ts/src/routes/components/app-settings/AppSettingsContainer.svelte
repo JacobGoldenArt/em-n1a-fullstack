@@ -12,7 +12,7 @@
 </script>
 
 <div id="settings-sidebar" class:open={$appSettingsOpen}>
-	<div id="app-settings-nav-container">
+	<div id="app-settings-nav-panel">
 		<AppSettingsNav />
 	</div>
 	<div id="app-settings-panel" class:open={$appSettingsOpen}>
@@ -23,27 +23,30 @@
 <style>
 #settings-sidebar {
     display: flex;
-    position: static;
+    position: absolute;
+	z-index: 10;
     width: 60px;
     height: 100vh;
     justify-content: flex-start;
     transition: all 0.3s ease;
-	border-right: 1px solid var(--grey-ghost);
+	border-right: var(--quiet-border);
     overflow: hidden;
+	box-shadow: -9px -2px 4px 10px rgb(0 0 0 / 55%);
 }
 
 #settings-sidebar.open {
 	width: 360px;
-	border-right: 1px solid #000;
 }
 
-#app-settings-nav-container {
+#app-settings-nav-panel {
     display: flex;
     height: 100vh;
     flex-direction: column;
-    border-right: 1px solid var(--grey-ghost);
-    background: var(--black-jeans);
+    border-right: var(--quiet-border);
     justify-content: space-between;
+}
+
+#app-settings-panel {
 }
 
 

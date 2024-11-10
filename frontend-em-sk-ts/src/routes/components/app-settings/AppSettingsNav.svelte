@@ -180,12 +180,10 @@
 
 	button.icon:hover {
 		color: var(--dm-pretty-much-white);
-		transition: color 0.3s ease;
+		transition: var(--transition-1);
 	}
 
 	button.icon.active, button.icon:focus {
 		color: var(--dm-pink-panther);
-		outline: none;
-		box-shadow: none;
 	}
 </style>
